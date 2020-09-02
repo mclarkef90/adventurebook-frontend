@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 
-import manageApp from './manageApp.js'
+import manageApp from './reducers/manageApp'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

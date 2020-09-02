@@ -1,21 +1,40 @@
 import React from 'react';
 import './App.css';
+import {connect} from 'react-redux'
+import {Route, Redirect, Switch, withRouter} from 'react-router-dom';
+import NavBar from './components/NavBar';
+import LogIn from './components/LogIn';
+import Home from './components/Home';
+import UserContainer from './containers/UserContainer'
+import TopIdeas from './components/TopIdeas'
+
 
 class App extends React.Component {
 
   componentDidMount(){
-    fetch('http://localhost:3000/api/v1/reviews/1')
-    .then(response => response.json())
-    .then(data => console.log(data))
+    let id = localStorage.getItem('userId')
   }
 
   render() {
     return (
       <div>
-        Hi
+        <NavBar />
+        <Switch>
+        <Route path='/LogIn' render={() => <LogIn />} />
+        <Route path='/Home' render={() => <UserContainer />}/>
+        <Route path='/TopIdeas' render={() => <TopIdeas />} />
+        <Route path='/' render={() => <Home />} />
+        </Switch>
+
       </div>
     )
   };
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(App))
