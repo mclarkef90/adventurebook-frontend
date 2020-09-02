@@ -1,6 +1,6 @@
-export function fetchUser(id){
+export function fetchAdventures(){
   return(dispatch) => {
-    fetch(`http://localhost:3000/api/v1/users/${localStorage.getItem('userId')}`, {
+    fetch('http://localhost:3000/api/v1/adventures', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -8,10 +8,10 @@ export function fetchUser(id){
       },
     })
       .then(res => res.json())
-      .then(user => {
+      .then(adventures => {
         dispatch({
-          type:'SET_USER',
-          payload: user
+          type:'FETCH_ADVENTURES',
+          payload: adventures
         })})
       }
     }

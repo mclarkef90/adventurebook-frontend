@@ -7,8 +7,8 @@ import LogIn from './components/LogIn';
 import UserContainer from './containers/UserContainer'
 import TopIdeas from './components/TopIdeas'
 import {fetchUser} from './actions/fetchUser'
-import Home from './components/Home'
-
+import Home from './components/Home';
+import Adventure from './components/Adventure'
 
 
 class App extends React.Component {
@@ -33,6 +33,7 @@ class App extends React.Component {
         <Route path='/LogIn' render={(routerProps) => <LogIn {...routerProps}/>} />
         <Route path='/Profile' render={() => <UserContainer />}/>
         <Route path='/TopIdeas' render={() => <TopIdeas />} />
+        <Route path='/adventures/:id' render={(routerProps) => <Adventure {...routerProps}/>} />
         </Switch>
 
       </div>

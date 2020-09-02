@@ -6,12 +6,10 @@ import {Redirect} from 'react-router-dom'
   render(){
     return(
       <>
-      {this.props.user ?
-        <h2></h2>
-        :
-        <>
+      {localStorage.getItem('userId') == undefined ?
         <Redirect to="/LogIn"/>
-        </>
+        :
+        null
       }
       </>
     )

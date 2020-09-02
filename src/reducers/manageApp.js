@@ -11,6 +11,21 @@ export default function manageApp(state=
         ...state, user: action.payload
       }
 
+    case 'FETCH_USERS':
+      return {
+        ...state, users: action.payload
+      }
+
+    case 'FETCH_ADVENTURES':
+      return {
+        ...state, adventures: action.payload
+      }
+
+    case 'FETCH_REVIEWS':
+      return {
+        ...state, reviews: action.payload
+      }
+
     default:
       return state
   }
