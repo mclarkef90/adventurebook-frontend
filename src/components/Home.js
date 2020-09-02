@@ -1,16 +1,18 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom'
 
  class Home extends React.Component {
   render(){
     return(
       <>
       {this.props.user ?
-        <h2>Hi {this.props.user.username}</h2>
+        <h2></h2>
         :
-        <p>Log In or Create an Account</p>
+        <>
+        <Redirect to="/LogIn"/>
+        </>
       }
-
       </>
     )
   }

@@ -18,9 +18,10 @@ class LogIn extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    let history = this.props.history
     let email= this.state.email
     let password= this.state.password
-    this.props.boundSetUser(email,password)
+    this.props.boundSetUser(email, history)
     this.setState({
         email: "",
         password: ""
@@ -47,7 +48,7 @@ class LogIn extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return(
-    {boundSetUser: (user) => dispatch(setUser(user))}
+    {boundSetUser: (user, history) => dispatch(setUser(user, history))}
   )
 }
 

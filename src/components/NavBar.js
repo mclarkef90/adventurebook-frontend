@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 
 const link= {
   width: '100px',
@@ -26,9 +26,18 @@ export default function NavBar(props){
       Today's Top
     </NavLink>
 
-    {props.user ? <NavLink to="Home" exact style={link} activeStyle={{background: 'green'}}>
-      Profile
-    </NavLink> : null}
+    {localStorage.userId !== undefined ?
+        <>
+        <NavLink to="Profile" exact style={link} activeStyle={{background: 'green'}}>
+          Profile
+        </NavLink>
+
+        <Link to="/" onClick={console.log("hi")} exact style={link} activeStyle={{background: 'green'}}>
+          Log Out
+        </Link>
+        </>
+        :
+        null}
 
     <br/><br/>
     <h1>
