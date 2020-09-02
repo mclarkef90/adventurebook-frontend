@@ -20,13 +20,14 @@ class App extends React.Component {
   }
 
   logoutHandler = () => {
+    console.log("hi")
     localStorage.clear()
   }
 
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar logoutHandler={this.logoutHandler}/>
         <Route path='/' render={() => <Home />} />
         <Switch>
         <Route path='/LogIn' render={(routerProps) => <LogIn {...routerProps}/>} />

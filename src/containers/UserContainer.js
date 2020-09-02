@@ -5,11 +5,11 @@ import {fetchUser} from '../actions/fetchUser'
 
 class UserContainer extends React.Component {
 
-  componentDidMount(){
-    let id = localStorage.getItem('userId')
-    if (id != undefined)
-    {this.props.boundFetchUser(id)}
-  }
+  // componentDidMount(){
+  //   let id = localStorage.getItem('userId')
+  //   if (id != undefined)
+  //   {this.props.boundFetchUser(id)}
+  // }
 
   render(props){
     return(
@@ -32,10 +32,10 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return(
-    {boundFetchUser: (id) => dispatch(fetchUser(id))}
-  )
-}
+// const mapDispatchToProps = dispatch => {
+//   return(
+//     {boundFetchUser: (id) => dispatch(fetchUser(id))}
+//   )
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserContainer)
+export default connect(mapStateToProps)(UserContainer)

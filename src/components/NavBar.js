@@ -32,7 +32,7 @@ export default function NavBar(props){
           Profile
         </NavLink>
 
-        <Link to="/" onClick={console.log("hi")} exact style={link} activeStyle={{background: 'green'}}>
+        <Link to="/" onClick={props.logoutHandler} exact style={link} activeStyle={{background: 'green'}}>
           Log Out
         </Link>
         </>
