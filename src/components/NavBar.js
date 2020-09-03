@@ -18,21 +18,21 @@ export default function NavBar(props){
       Home
     </NavLink>
 
-    <NavLink to="LogIn" exact style={link} activeStyle={{background: 'green'}}>
+    <NavLink to="/LogIn" exact style={link} activeStyle={{background: 'green'}}>
       Log In
     </NavLink>
 
-    <NavLink to="TopIdeas" exact style={link} activeStyle={{background: 'green'}}>
+    <NavLink to="/TopIdeas" exact style={link} activeStyle={{background: 'green'}}>
       Today's Top
     </NavLink>
 
     {localStorage.userId !== undefined ?
         <>
-        <NavLink to="Profile" exact style={link} activeStyle={{background: 'green'}}>
+        <NavLink to="/Profile" exact style={link} activeStyle={{background: 'green'}}>
           Profile
         </NavLink>
 
-        <NavLink to="Adventures" exact style={link} activeStyle={{background: 'green'}}>
+        <NavLink to="/Adventures" exact style={link} activeStyle={{background: 'green'}}>
           Adventures
         </NavLink>
 
