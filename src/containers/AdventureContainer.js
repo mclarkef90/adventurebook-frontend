@@ -1,12 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import {fetchUsers} from '../actions/fetchUsers'
 import {fetchAdventures} from '../actions/fetchAdventures'
 import {fetchReviews} from '../actions/fetchReviews'
 import {fetchUser} from '../actions/fetchUser'
+import Adventure from '../components/Adventure'
+import AdventureSearch from '../components/AdventureSearch'
 
-class UserContainer extends React.Component {
+
+class AdventureContainer extends React.Component {
 
   componentDidMount(){
     this.props.boundFetchUser();
@@ -20,15 +23,14 @@ class UserContainer extends React.Component {
 
     return(
       <>
-      {this.props.user !== null ?
+      {this.props.adventures !== [] ?
       <>
-        <h1> User Profile </h1>
-        <img src={this.props.user.data.attributes.profile_img} alt="kitten" className="profileImg"/>
-        <h2> UserName: {this.props.user.data.attributes.username} </h2>
-        <h2> Biography: {this.props.user.data.attributes.biography} </h2>
-        <br/>
-        <h1> My Adventure Ideas </h1>
+        <h1> Adventures </h1>
+        <AdventureSearch adventures={this.props.adventures}/>
 
+        <Switch>
+        <Route path='/adventures/:id' component={Adventure} />
+        </Switch>
         </>
         :
         null
@@ -56,4 +58,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(AdventureContainer)

@@ -5,10 +5,10 @@ import {Route, Redirect, Switch, withRouter} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import LogIn from './components/LogIn';
 import UserContainer from './containers/UserContainer'
+import AdventureContainer from './containers/AdventureContainer'
 import TopIdeas from './components/TopIdeas'
 import {fetchUser} from './actions/fetchUser'
 import Home from './components/Home';
-import Adventure from './components/Adventure'
 
 
 class App extends React.Component {
@@ -20,7 +20,6 @@ class App extends React.Component {
   }
 
   logoutHandler = () => {
-    console.log("hi")
     localStorage.clear()
   }
 
@@ -33,7 +32,7 @@ class App extends React.Component {
         <Route path='/LogIn' render={(routerProps) => <LogIn {...routerProps}/>} />
         <Route path='/Profile' render={() => <UserContainer />}/>
         <Route path='/TopIdeas' render={() => <TopIdeas />} />
-        <Route path='/adventures/:id' render={(routerProps) => <Adventure {...routerProps}/>} />
+        <Route path='/Adventures' render={(routerProps) => <AdventureContainer {...routerProps}/>} />
         </Switch>
 
       </div>

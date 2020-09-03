@@ -32,6 +32,10 @@ export default function NavBar(props){
           Profile
         </NavLink>
 
+        <NavLink to="Adventures" exact style={link} activeStyle={{background: 'green'}}>
+          Adventures
+        </NavLink>
+
         <Link to="/" onClick={props.logoutHandler} exact style={link} activeStyle={{background: 'green'}}>
           Log Out
         </Link>

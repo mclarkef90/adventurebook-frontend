@@ -30,6 +30,7 @@ export default class TopIdeas extends React.Component{
           <h2> User with the Best Ideas (based on Ratings and Likes) </h2>
             {console.log(this.state.user)}
             <h3>{this.state.user.username}</h3>
+
         </>
       :
         null
