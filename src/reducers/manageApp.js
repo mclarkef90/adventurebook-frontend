@@ -26,6 +26,12 @@ export default function manageApp(state=
         ...state, reviews: action.payload
       }
 
+    case 'CREATE_USER':
+      let usersUpdate= [...state.users].filter(user => user.id !== action.payload.id)
+        return {
+          ...state, users: [...usersUpdate, action.payload],
+        }
+
     default:
       return state
   }

@@ -25,7 +25,7 @@ export default class TopIdeas extends React.Component{
         <h1>Today's Best Ideas</h1>
           <h2>Most Liked Adventure Idea</h2>
             {console.log(this.state.adventure)}
-            <Link to={`/adventures/${this.state.adventure.id}`}><h3>{this.state.adventure.title}</h3></Link>
+            <Link to={`/Adventures/${this.state.adventure.id}`}><h3>{this.state.adventure.title}</h3></Link>
           <br/>
           <h2> User with the Best Ideas (based on Ratings and Likes) </h2>
             {console.log(this.state.user)}

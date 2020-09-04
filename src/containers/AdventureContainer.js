@@ -28,9 +28,9 @@ class AdventureContainer extends React.Component {
       {this.props.adventures ?
       <>
         <h1> Adventures </h1>
-        <AdventureSearch/>
         <Switch>
-        <Route path='/adventures/:id' component={Adventure} />
+        <Route path='/Adventures/:id' component={Adventure} />
+        <Route path='/Adventures' component={AdventureSearch} />
         </Switch>
         </>
         :

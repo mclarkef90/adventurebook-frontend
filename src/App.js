@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Route, Redirect, Switch, withRouter} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import LogIn from './components/LogIn';
+import SignUp from './components/SignUp';
 import UserContainer from './containers/UserContainer'
 import AdventureContainer from './containers/AdventureContainer'
 import TopIdeas from './components/TopIdeas'
@@ -32,6 +33,7 @@ class App extends React.Component {
         <Route path='/LogIn' render={(routerProps) => <LogIn {...routerProps}/>} />
         <Route path='/Profile' render={() => <UserContainer />}/>
         <Route path='/TopIdeas' render={() => <TopIdeas />} />
+        <Route path='/SignUp' render={() => <SignUp />} />
         <Route path='/Adventures' render={(routerProps) => <AdventureContainer {...routerProps}/>} />
         </Switch>
 

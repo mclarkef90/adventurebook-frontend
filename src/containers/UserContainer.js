@@ -20,7 +20,7 @@ class UserContainer extends React.Component {
 
     return(
       <>
-      {this.props.user !== null ?
+      {this.props.user ?
       <>
         <h1> User Profile </h1>
         <img src={this.props.user.data.attributes.profile_img} alt="kitten" className="profileImg"/>

@@ -26,6 +26,10 @@ export default function NavBar(props){
       Today's Top
     </NavLink>
 
+    <NavLink to="/SignUp" exact style={link} activeStyle={{background: 'green'}}>
+      Sign Up
+    </NavLink>
+
     {localStorage.userId !== undefined ?
         <>
         <NavLink to="/Profile" exact style={link} activeStyle={{background: 'green'}}>
