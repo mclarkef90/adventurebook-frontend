@@ -1,4 +1,4 @@
-export function createUser({username, password, password_confirmation, email, profile_img, biography}) {
+export function createUser({username, password, password_confirmation, email, profile_img, biography}, history) {
 
   return (dispatch) => {
     fetch('http://localhost:3000/api/v1/users/', {
@@ -13,9 +13,13 @@ export function createUser({username, password, password_confirmation, email, pr
       }
     )
     .then(response => response.json())
-    .then(user => dispatch({
+    .then(user => {
+      dispatch({
       type: 'CREATE_USER',
       payload: user
-    }))
-    }
+      })
+      history.push('/LogIn')
+      }
+    )
   }
+}

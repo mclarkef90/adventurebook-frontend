@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { createUser } from '../actions/createUser'
+import { createUser } from '../actions/createUser';
+import { fetchUsers } from '../actions/fetchUsers'
 
 class SignUp extends React.Component {
 
@@ -16,6 +17,10 @@ class SignUp extends React.Component {
     }
   }
 
+  componentDidMount(){
+    this.props.fetchUsers()
+  }
+
   handleOnChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -25,7 +30,8 @@ class SignUp extends React.Component {
   handleOnSubmit = event => {
     event.preventDefault();
     console.log(this.state)
-    this.props.createUser(this.state)
+    let history = this.props.history
+    this.props.createUser(this.state, history)
 
     this.setState({
       username: "",
@@ -68,5 +74,11 @@ class SignUp extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return{
+    users: state.users,
+  }
+}
 
-export default connect(null, {createUser})(SignUp)
+
+export default connect(mapStateToProps, {createUser, fetchUsers})(SignUp)

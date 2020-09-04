@@ -27,7 +27,8 @@ export default function manageApp(state=
       }
 
     case 'CREATE_USER':
-      let usersUpdate= [...state.users].filter(user => user.id !== action.payload.id)
+      console.log(state.users)
+      let usersUpdate= [...state.users.data].filter(user => user.id !== action.payload.id)
         return {
           ...state, users: [...usersUpdate, action.payload],
         }
