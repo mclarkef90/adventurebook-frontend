@@ -6,7 +6,9 @@ import {fetchAdventures} from '../actions/fetchAdventures'
 import {fetchReviews} from '../actions/fetchReviews'
 import {fetchUser} from '../actions/fetchUser'
 import Adventure from '../components/Adventure'
-import AdventureSearch from '../components/AdventureSearch'
+import AdventureSearch from '../components/AdventureSearch';
+import AdventuresList from '../components/AdventuresList'
+
 
 
 class AdventureContainer extends React.Component {
@@ -23,11 +25,10 @@ class AdventureContainer extends React.Component {
 
     return(
       <>
-      {this.props.adventures !== [] ?
+      {this.props.adventures ?
       <>
         <h1> Adventures </h1>
-        <AdventureSearch adventures={this.props.adventures}/>
-
+        <AdventureSearch/>
         <Switch>
         <Route path='/adventures/:id' component={Adventure} />
         </Switch>
@@ -44,7 +45,7 @@ const mapStateToProps = state => {
   return{
     user: state.user,
     users: state.users,
-    adventures: state.adventures,
+    adventures: state.adventures.data,
     reviews: state.reviews
   }
 }

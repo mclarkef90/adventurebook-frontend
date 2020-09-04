@@ -1,6 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { addLike } from '../actions/addLike';
+import {fetchUsers} from '../actions/fetchUsers'
+import {fetchAdventures} from '../actions/fetchAdventures'
+import {fetchReviews} from '../actions/fetchReviews'
+import {fetchUser} from '../actions/fetchUser'
 // import NewComment from './NewComment'
 
 class AdventureSearch extends React.Component{
@@ -9,32 +13,44 @@ class AdventureSearch extends React.Component{
     super(props)
 
     this.state={
-      searchTerm: ""
-    }
+      searchTerm: "",
+      currentlyDisplayed: this.props.adventures
+    };
+
+    this.onInputChange = this.onInputChange.bind(this)
   }
 
-  searchChangeHandler = event => {
+  componentDidMount(){
+    this.props.boundFetchUser();
+    this.props.boundFetchUsers();
+    this.props.boundFetchAdventures();
+    this.props.boundFetchReviews();
+  }
+
+  onInputChange(event) {
+    let newlyDisplayed = this.props.adventures.filter(adventure => adventure.attributes.description.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1)
     this.setState({
-      searchTerm: event.target.value
+      searchTerm: event.target.value,
+      currentlyDisplayed: newlyDisplayed
     })
   }
 
-  likeHandler = (event) => {
-    event.persist()
-    let id= parseInt(event.target.dataset.id)
-    let likes= parseInt(event.target.dataset.likes)
-    let updatedLikes= likes + 1
-    this.props.addLike(id, updatedLikes)
-  }
-
   render(){
-
      return(
       <div>
-      {this.props.user !== null ?
+      {this.props.adventures ?
         <>
           <br/>
-          <input type="text" value={this.state.searchTerm} placeholder="Search Adventures" name="searchTerm" onChange={this.searchChangeHandler}/>
+          <input type="text" value={this.state.searchTerm} placeholder="Search Adventures" name="searchTerm" onChange={this.onInputChange}/>
+
+          {this.state.currentlyDisplayed.map(adventure=>
+          <ul key={adventure.attributes.title}>
+          <img src={adventure.attributes.image_url} className="profileImg" alt="activity"/>
+          <h1>{adventure.attributes.title}</h1>
+          <p>{adventure.attributes.description}</p>
+          </ul>
+          )}
+          <br/>
           <br/>
         </>
         :
@@ -44,12 +60,22 @@ class AdventureSearch extends React.Component{
     )}
 }
 
-function mapStateToProps(state){
+const mapStateToProps = state => {
   return{
-    adventures: state.adventures,
+    user: state.user,
     users: state.users,
-    user: state.user
+    adventures: state.adventures.data,
+    reviews: state.reviews
   }
 }
 
-export default connect(mapStateToProps, {addLike})(AdventureSearch)
+const mapDispatchToProps = dispatch => {
+  return{
+    boundFetchUser: () => dispatch(fetchUser()),
+    boundFetchUsers: () => dispatch(fetchUsers()),
+    boundFetchAdventures: () => dispatch(fetchAdventures()),
+    boundFetchReviews: () => dispatch(fetchReviews())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdventureSearch)

@@ -26,8 +26,9 @@ class Adventure extends React.Component {
       <>
       {this.state.adventure ?
       <>
+      <img src={this.state.adventure.image_url} className="profileImg" alt="activity"/>
       <h1>{this.state.adventure.title}</h1>
-      <p>hi from Adventure show</p>
+      <p>{this.state.adventure.description}</p>
       </>
       :
       null}
