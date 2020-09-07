@@ -41,7 +41,7 @@ class App extends React.Component {
       <Route path='/Profile' render={(routerProps) => <UserContainer {...routerProps} user={this.props.user} users={this.props.users}/>}/>
       <Route path='/Adventures/Search' render={(routerProps) => <AdventureSearch {...routerProps} adventures={this.props.adventures}/>}/>
       <Route path='/Adventures/:id' render={(routerProps) => <Adventure {...routerProps} />}/>
-      <Route path='/Users/:id' render={(routerProps) => <TopUser {...routerProps} users={this.props.users} adventures={this.props.adventures}/>}/>
+      <Route path='/Users/:id' render={(routerProps) => <TopUser {...routerProps} user={this.props.user} users={this.props.users} adventures={this.props.adventures}/>}/>
       </Switch>
       </>
       )

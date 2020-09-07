@@ -8,17 +8,23 @@ export default function TopUser(props){
   console.log(user)
 
   return(
-    <div>
-    <h1>Ideas by {user.attributes.username}</h1>
-      {adventures.map(adventure =>
-        <ul key={adventure.id}>
-        <img src={adventure.attributes.image_url} className="profileImg" alt="activity"/>
-        <Link to={`/Adventures/${adventure.id}`}><h1>{adventure.attributes.title}</h1></Link>
-        <p>{adventure.attributes.description}</p>
-        <p>Completions: {adventure.attributes.completions}</p>
-        <p>Likes: {adventure.attributes.likes} </p>
-        </ul>
-        )}
-    </div>
+    <>
+    {props.user ?
+      <>
+        <h1>Ideas by {user.attributes.username}</h1>
+          {adventures.map(adventure =>
+            <ul key={adventure.id}>
+            <img src={adventure.attributes.image_url} className="profileImg" alt="activity"/>
+            <Link to={`/Adventures/${adventure.id}`}><h1>{adventure.attributes.title}</h1></Link>
+            <p>{adventure.attributes.description}</p>
+            <p>Completions: {adventure.attributes.completions}</p>
+            <p>Likes: {adventure.attributes.likes} </p>
+            </ul>
+            )}
+      </>
+      :
+      null
+    }
+    </>
   )
 }
