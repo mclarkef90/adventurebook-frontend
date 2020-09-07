@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
 import EditUser from '../components/EditUser'
 import UserAdventures from '../components/UserAdventures'
+import UserReviews from '../components/UserReviews'
 import {deleteUser} from '../actions/deleteUser'
 import AddAdventure from '../components/AddAdventure'
 
@@ -36,6 +37,9 @@ class UserContainer extends React.Component {
           <h1> My Adventure Ideas </h1>
           <UserAdventures userid={user.id} />
           <AddAdventure userid={user.id} />
+
+          <h1> My Comments </h1>
+          <UserReviews userid={user.id}/>
 
         </>
         :

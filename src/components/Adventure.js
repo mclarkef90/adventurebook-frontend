@@ -10,13 +10,13 @@ class Adventure extends React.Component {
     super(props)
   }
 
-  likeHandler = (event) => {
-    event.persist()
-    let id= parseInt(event.target.dataset.id)
-    let likes= parseInt(event.target.dataset.likes)
-    let updatedLikes= likes + 1
-    this.props.boundAddLike(id, updatedLikes);
-  }
+  // likeHandler = (event) => {
+  //   event.persist()
+  //   let id= parseInt(event.target.dataset.id)
+  //   let likes= parseInt(event.target.dataset.likes)
+  //   let updatedLikes= likes + 1
+  //   this.props.boundAddLike(id, updatedLikes);
+  // }
 
   render(){
     let id= this.props.match.params.id
@@ -32,7 +32,7 @@ class Adventure extends React.Component {
           <h1>{adventure.attributes.title}</h1>
           <p>{adventure.attributes.description}</p>
           <p>Completions: {adventure.attributes.completions}</p>
-          <p>Like: <button data-id= {adventure.id} data-likes={adventure.attributes.likes} onClick={this.likeHandler}>{adventure.attributes.likes}</button> </p>
+          <p>Likes: {adventure.attributes.likes} </p>
           <h2>Reviews</h2>
             {reviews.map(review =>
               <ul key={review.id}>
