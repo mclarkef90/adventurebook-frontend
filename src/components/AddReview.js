@@ -29,9 +29,9 @@ class AddReview extends React.Component {
     this.setState({
       comment: "",
       adventure_id: "",
-      liked: "",
+      liked: false,
       user_id: "",
-      completed: ""
+      completed: false
     })
   }
 

@@ -29,7 +29,7 @@ export default class TopIdeas extends React.Component{
           <br/>
           <h2> User with the Best Ideas (based on Ratings and Likes) </h2>
             {console.log(this.state.user)}
-            <h3>{this.state.user.username}</h3>
+          <Link to={`/Users/${this.state.user.id}`}><h3>{this.state.user.username}</h3></Link>
 
         </>
       :
