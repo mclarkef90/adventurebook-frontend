@@ -1,38 +1,33 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Route} from 'react-router-dom'
-import {fetchUsers} from '../actions/fetchUsers'
-import {fetchAdventures} from '../actions/fetchAdventures'
-import {fetchReviews} from '../actions/fetchReviews'
-import {fetchUser} from '../actions/fetchUser'
+import {Route, Switch} from 'react-router-dom'
+import {connect} from 'react-redux'
+import EditUser from '../components/EditUser'
 
 class UserContainer extends React.Component {
 
-  componentDidMount(){
-    this.props.boundFetchUser();
-    this.props.boundFetchUsers();
-    this.props.boundFetchAdventures();
-    this.props.boundFetchReviews();
-  }
-
   render(props){
     let userId= localStorage.getItem('userId')
-
+    console.log(this.props)
     return(
       <>
-      {this.props.user ?
-      <>
-        <h1> User Profile </h1>
-        <img src={this.props.user.data.attributes.profile_img} alt="kitten" className="profileImg"/>
-        <h2> UserName: {this.props.user.data.attributes.username} </h2>
-        <h2> Biography: {this.props.user.data.attributes.biography} </h2>
-        <br/>
-        <h1> My Adventure Ideas </h1>
+        {this.props.user ?
+        <>
+          <h1> User Profile </h1>
+          <img src={this.props.user.attributes.profile_img} alt="kitten" className="profileImg"/>
+          <h2> Username: {this.props.user.attributes.username} </h2>
+          <h2> Email: {this.props.user.attributes.email} </h2>
+          <h2> Biography: {this.props.user.attributes.biography} </h2>
+          <button onClick={()=> (this.props.history.push('/Profile/edit'))}>Edit Profile</button>
+          <br/>
 
+          <h1> My Adventure Ideas </h1>
+          <Switch>
+          <Route path="/Profile/edit" render={(routerProps) => <EditUser {...routerProps} user={this.props.user}/>}/>
+          </Switch>
         </>
         :
         null
-      }
+        }
       </>
     )
   }
@@ -43,17 +38,9 @@ const mapStateToProps = state => {
     user: state.user,
     users: state.users,
     adventures: state.adventures,
-    reviews: state.reviews
+    reviews: state.reviews,
+    loading: state.loading
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return{
-    boundFetchUser: () => dispatch(fetchUser()),
-    boundFetchUsers: () => dispatch(fetchUsers()),
-    boundFetchAdventures: () => dispatch(fetchAdventures()),
-    boundFetchReviews: () => dispatch(fetchReviews())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserContainer)
+export default connect(mapStateToProps)(UserContainer)

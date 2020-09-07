@@ -15,6 +15,8 @@ export function addLike(id, updatedLikes) {
     .then(adventure => dispatch({
       type: 'ADD_LIKE',
       payload: adventure
-    }))
+    }),
+  
+    )
+    }
   }
-}

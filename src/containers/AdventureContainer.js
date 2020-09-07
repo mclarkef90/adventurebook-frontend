@@ -8,55 +8,31 @@ import {fetchUser} from '../actions/fetchUser'
 import Adventure from '../components/Adventure'
 import AdventureSearch from '../components/AdventureSearch';
 import AdventuresList from '../components/AdventuresList'
-
-
+import { addLike } from '../actions/addLike';
 
 class AdventureContainer extends React.Component {
 
-  componentDidMount(){
-    this.props.boundFetchUser();
-    this.props.boundFetchUsers();
-    this.props.boundFetchAdventures();
-    this.props.boundFetchReviews();
+  likeHandler = (event) => {
+    event.persist()
+    let id= parseInt(event.target.dataset.id)
+    let likes= parseInt(event.target.dataset.likes)
+    let updatedLikes= likes + 1
+    this.props.boundAddLike(id, updatedLikes);
   }
 
   render(props){
-    let userId= localStorage.getItem('userId')
 
+    // let adventure = this.props.adventures.filter(adventure => adventure.id == id)[0]
+
+
+    console.log(this.props)
     return(
       <>
-      {this.props.adventures ?
-      <>
-        <h1> Adventures </h1>
-        <Switch>
-        <Route path='/Adventures/:id' component={Adventure} />
-        <Route path='/Adventures' component={AdventureSearch} />
-        </Switch>
-        </>
-        :
-        null
-      }
       </>
-    )
-  }
-}
 
-const mapStateToProps = state => {
-  return{
-    user: state.user,
-    users: state.users,
-    adventures: state.adventures.data,
-    reviews: state.reviews
-  }
-}
+          )
+        }
+      }
 
-const mapDispatchToProps = dispatch => {
-  return{
-    boundFetchUser: () => dispatch(fetchUser()),
-    boundFetchUsers: () => dispatch(fetchUsers()),
-    boundFetchAdventures: () => dispatch(fetchAdventures()),
-    boundFetchReviews: () => dispatch(fetchReviews())
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdventureContainer)
+export default (AdventureContainer)

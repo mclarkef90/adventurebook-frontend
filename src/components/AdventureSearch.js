@@ -1,81 +1,49 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { addLike } from '../actions/addLike';
-import {fetchUsers} from '../actions/fetchUsers'
-import {fetchAdventures} from '../actions/fetchAdventures'
-import {fetchReviews} from '../actions/fetchReviews'
-import {fetchUser} from '../actions/fetchUser'
+import {Link} from 'react-router-dom'
+
 // import NewComment from './NewComment'
 
 class AdventureSearch extends React.Component{
 
-  constructor(props){
-    super(props)
-
-    this.state={
+    constructor(props){
+      super(props)
+      console.log(props)
+    }
+    state={
       searchTerm: "",
-      currentlyDisplayed: this.props.adventures
+      currentDisplayed: this.props.adventures
     };
 
-    this.onInputChange = this.onInputChange.bind(this)
-  }
 
-  componentDidMount(){
-    this.props.boundFetchUser();
-    this.props.boundFetchUsers();
-    this.props.boundFetchAdventures();
-    this.props.boundFetchReviews();
-  }
-
-  onInputChange(event) {
+  onInputChange = (event) => {
     let newlyDisplayed = this.props.adventures.filter(adventure => adventure.attributes.description.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1)
     this.setState({
       searchTerm: event.target.value,
-      currentlyDisplayed: newlyDisplayed
+      currentDisplayed: newlyDisplayed
     })
   }
 
   render(){
+    console.log(this.props.adventures)
+    console.log(this.state)
      return(
       <div>
-      {this.props.adventures ?
-        <>
-          <br/>
+        <br/>
           <input type="text" value={this.state.searchTerm} placeholder="Search Adventures" name="searchTerm" onChange={this.onInputChange}/>
 
-          {this.state.currentlyDisplayed.map(adventure=>
-          <ul key={adventure.attributes.title}>
-          <img src={adventure.attributes.image_url} className="profileImg" alt="activity"/>
-          <h1>{adventure.attributes.title}</h1>
-          <p>{adventure.attributes.description}</p>
-          </ul>
+          {this.state.currentDisplayed.map(adventure=>
+            <ul key={adventure.attributes.title}>
+              <img src={adventure.attributes.image_url} className="profileImg" alt="activity"/>
+              <Link to={`/Adventures/${adventure.id}`}><h1>{adventure.attributes.title}</h1></Link>
+              <p>{adventure.attributes.description}</p>
+              <p>Likes: {adventure.attributes.likes}</p>
+              <p>Completions: {adventure.attributes.completions}</p>
+            </ul>
           )}
-          <br/>
-          <br/>
-        </>
-        :
-        null
-        }
-      </div>
-    )}
+       </div>
+      )
+    }
 }
 
-const mapStateToProps = state => {
-  return{
-    user: state.user,
-    users: state.users,
-    adventures: state.adventures.data,
-    reviews: state.reviews
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return{
-    boundFetchUser: () => dispatch(fetchUser()),
-    boundFetchUsers: () => dispatch(fetchUsers()),
-    boundFetchAdventures: () => dispatch(fetchAdventures()),
-    boundFetchReviews: () => dispatch(fetchReviews())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdventureSearch)
+export default (AdventureSearch)

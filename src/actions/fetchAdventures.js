@@ -1,5 +1,6 @@
 export function fetchAdventures(){
   return(dispatch) => {
+    dispatch({type: 'HANDLE_LOADING'})
     fetch('http://localhost:3000/api/v1/adventures', {
       method: 'GET',
       headers: {
