@@ -12,7 +12,7 @@ export function setUser(email, history){
     })
       .then(res => res.json())
       .then(user => {
-        localStorage.setItem('userId', user.id)
+        localStorage.setItem('userId', user.data.id)
         dispatch({
           type:'SET_USER',
           payload: user

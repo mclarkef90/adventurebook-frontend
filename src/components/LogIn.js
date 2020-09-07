@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
 import {setUser} from '../actions/setUser.js'
 
 class LogIn extends React.Component {
