@@ -9,6 +9,24 @@ import AddAdventure from '../components/AddAdventure'
 
 class UserContainer extends React.Component {
 
+  constructor(props){
+    super(props)
+    this.state={
+      editProfile: false,
+      editAdventure: false,
+      editReview: false
+    }
+  }
+
+  hideEditProfile = () => {
+    this.setState(prevState => ({editProfile: !this.state.editProfile}))
+    }
+
+  hideEditAdventure = () => {
+    this.setState(prevState => ({editAdventure: !this.state.editAdventure}))
+    }
+
+
   handleDelete = (id) => {
     let history = this.props.history
     this.props.deleteUser(id, history)
@@ -19,6 +37,8 @@ class UserContainer extends React.Component {
     console.log(this.props)
     let user= this.props.users.filter(user=> user.id == userId)[0]
     console.log(user)
+    console.log(this.state)
+
     return(
       <>
         {this.props.user ?
@@ -28,10 +48,16 @@ class UserContainer extends React.Component {
           <h2> Username: {user.attributes.username} </h2>
           <h2> Email: {user.attributes.email} </h2>
           <h2> Biography: {user.attributes.biography} </h2>
-          <button onClick={()=> (this.props.history.push('/Profile/edit'))}>Edit Profile</button>{' '}
+          {this.state.editProfile ?
+            <>
+            <EditUser user={user}/>
+            </>
+            :
+            null
+          }
+          <button onClick={this.hideEditProfile}>Edit Profile</button>{' '}
           <button onClick={(id) => this.handleDelete(user.id)}>Delete Profile</button>
           <br/>
-          <EditUser user={user}/>
 
 
           <h1> My Adventure Ideas </h1>

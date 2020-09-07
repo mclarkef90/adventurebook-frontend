@@ -80,6 +80,7 @@ class EditUser extends React.Component {
         <br/><br/>
         <input type="submit" value="Submit"/>{'  '}
         </form>
+        <br/>
       </>
       </div>
     )
