@@ -36,9 +36,8 @@ export default function manageApp(state=
 
     case 'CREATE_USER':
       console.log(state.users)
-      let usersUpdate= [...state.users].filter(user => user.id !== action.payload.id)
         return {
-          ...state, users: [...usersUpdate, action.payload.data],
+          ...state, users: [...state.adventures, action.payload.data],
         }
 
     case 'ADD_LIKE':
@@ -48,10 +47,9 @@ export default function manageApp(state=
         }
 
     case 'EDIT_USER':
-      debugger
-      let usersEdit= [...state.users].filter(user => user.id !== action.payload.id)
+      let usersEdit= [...state.users].filter(user => user.id !== action.payload.data.id)
         return {
-          ...state, users: [...usersEdit, action.payload]
+          ...state, users: [...usersEdit, action.payload.data]
         }
 
     case 'DELETE_USER':
@@ -67,9 +65,14 @@ export default function manageApp(state=
          }
 
      case 'CREATE_ADVENTURE':
-     
         return {...state, adventures: [...state.adventures, action.payload.data],
         }
+
+      case 'EDIT_ADVENTURE':
+        let adventuresEdit= [...state.adventures].filter(adventure => adventure.id !== action.payload.data.id)
+          return {
+            ...state, adventures: [...adventuresEdit, action.payload.data]
+          }
 
     default:
       return state

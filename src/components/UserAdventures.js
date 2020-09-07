@@ -2,6 +2,8 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {deleteAdventure} from '../actions/deleteAdventure'
+import {editAdventure} from '../actions/editAdventure'
+import EditAdventure from './EditAdventure'
 
 class UserAdventures extends React.Component{
 
@@ -23,7 +25,7 @@ class UserAdventures extends React.Component{
           <ul key={adventure.id}>
             <Link to={`/Adventures/${adventure.id}`}><h4>{adventure.attributes.title}</h4></Link>
             <button >Edit Adventure</button>{' '}<button onClick={(id)=> this.handleDelete(adventure.id)}>Delete Adventure</button>
-
+            <EditAdventure adventure={adventure} />
           </ul>
         )}
       </>
@@ -37,4 +39,4 @@ const mapStateToProps = state => {
     adventures: state.adventures,
   }
 }
-export default connect(mapStateToProps, {deleteAdventure})(UserAdventures)
+export default connect(mapStateToProps, {deleteAdventure, editAdventure})(UserAdventures)

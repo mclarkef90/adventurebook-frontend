@@ -16,25 +16,27 @@ class UserContainer extends React.Component {
   render(props){
     let userId= localStorage.getItem('userId')
     console.log(this.props)
+    let user= this.props.users.filter(user=> user.id == userId)[0]
+    console.log(user)
     return(
       <>
         {this.props.user ?
         <>
           <h1> User Profile </h1>
-          <img src={this.props.user.attributes.profile_img} alt="kitten" className="profileImg"/>
-          <h2> Username: {this.props.user.attributes.username} </h2>
-          <h2> Email: {this.props.user.attributes.email} </h2>
-          <h2> Biography: {this.props.user.attributes.biography} </h2>
+          <img src={user.attributes.profile_img} alt="kitten" className="profileImg"/>
+          <h2> Username: {user.attributes.username} </h2>
+          <h2> Email: {user.attributes.email} </h2>
+          <h2> Biography: {user.attributes.biography} </h2>
           <button onClick={()=> (this.props.history.push('/Profile/edit'))}>Edit Profile</button>{' '}
-          <button onClick={(id) => this.handleDelete(this.props.user.id)}>Delete Profile</button>
+          <button onClick={(id) => this.handleDelete(user.id)}>Delete Profile</button>
           <br/>
+          <EditUser user={user}/>
+
 
           <h1> My Adventure Ideas </h1>
-          <AddAdventure userid={this.props.user.id} />
-          <UserAdventures userid={this.props.user.id} />
-          <Switch>
-          <Route path="/Profile/edit" render={(routerProps) => <EditUser {...routerProps} user={this.props.user}/>}/>
-          </Switch>
+          <UserAdventures userid={user.id} />
+          <AddAdventure userid={user.id} />
+
         </>
         :
         null
