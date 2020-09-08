@@ -14,7 +14,8 @@ class UserContainer extends React.Component {
     this.state={
       editProfile: false,
       editAdventure: false,
-      editReview: false
+      editReview: false,
+      addAdventure: false
     }
   }
 
@@ -22,8 +23,8 @@ class UserContainer extends React.Component {
     this.setState(prevState => ({editProfile: !this.state.editProfile}))
     }
 
-  hideEditAdventure = () => {
-    this.setState(prevState => ({editAdventure: !this.state.editAdventure}))
+  hideAddAdventure = () => {
+    this.setState(prevState => ({addAdventure: !this.state.addAdventure}))
     }
 
 
@@ -61,8 +62,16 @@ class UserContainer extends React.Component {
 
 
           <h1> My Adventure Ideas </h1>
+          <button onClick={this.hideAddAdventure}>Add Adventure</button>{' '}
+          {this.state.addAdventure ?
+            <>
+            <AddAdventure userid={user.id}/>
+            </>
+            :
+            null
+          }
+
           <UserAdventures userid={user.id} />
-          <AddAdventure userid={user.id} />
 
           <h1> My Comments </h1>
           <UserReviews userid={user.id}/>

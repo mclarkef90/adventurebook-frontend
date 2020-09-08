@@ -9,10 +9,17 @@ class UserReviews extends React.Component{
 
   constructor(props){
     super(props)
+    this.state={
+      editReview: false
+    }
   }
 
   handleDelete = (id, adventure_id) => {
     this.props.deleteReview(id, adventure_id)
+  }
+
+  hideEditReview = () => {
+    this.setState(prevState=> ({editReview: !this.state.editReview}))
   }
 
   render(){
@@ -26,8 +33,16 @@ class UserReviews extends React.Component{
             <p>{review.attributes.comment}</p>
             <p>Liked: {review.attributes.liked ? 'Yes' : 'No'}  </p>
             <p>Completed: {review.attributes.completed ? 'Yes' : 'No'}  </p>
-            <button>Edit Review</button>{' '}<button onClick={(id, adventure_id)=> this.handleDelete(review.id, review.adventure_id)}>Delete Comment</button>
-            <EditReview review={review} />
+            <button onClick={this.hideEditReview}>Edit Review</button>{' '}<button onClick={(id, adventure_id)=> this.handleDelete(review.id, review.adventure_id)}>Delete Comment</button>
+
+            {this.state.editReview ?
+              <>
+              <EditReview review={review} />
+              </>
+              :
+              null
+            }
+
           </ul>
         )}
       </>

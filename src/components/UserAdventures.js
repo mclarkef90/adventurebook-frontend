@@ -9,10 +9,17 @@ class UserAdventures extends React.Component{
 
   constructor(props){
     super(props)
+    this.state={
+      editAdventure: false
+    }
   }
 
   handleDelete = (id) => {
     this.props.deleteAdventure(id)
+  }
+
+  hideEditAdventure = () => {
+    this.setState(prevState => ({editAdventure: !this.state.editAdventure}))
   }
 
   render(){
@@ -24,8 +31,16 @@ class UserAdventures extends React.Component{
         {adventures.map(adventure=>
           <ul key={adventure.id}>
             <Link to={`/Adventures/${adventure.id}`}><h4>{adventure.attributes.title}</h4></Link>
-            <button >Edit Adventure</button>{' '}<button onClick={(id)=> this.handleDelete(adventure.id)}>Delete Adventure</button>
-            <EditAdventure adventure={adventure} />
+            <button onClick={this.hideEditAdventure}>Edit Adventure</button>{' '}<button onClick={(id)=> this.handleDelete(adventure.id)}>Delete Adventure</button>
+
+            {this.state.editAdventure ?
+              <>
+              <EditAdventure adventure={adventure} />
+              </>
+              :
+              null
+            }
+
           </ul>
         )}
       </>
