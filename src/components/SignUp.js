@@ -46,29 +46,44 @@ class SignUp extends React.Component {
   render() {
 
     return(
-      <div>
-        <form onSubmit={this.handleOnSubmit}>
+      <div className="container">
         <h2>Create User Profile</h2>
-        <label>Username:</label>
-        <input type="text" name="username" value={this.state.username} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>Email:</label>
-        <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>Password:</label>
-        <input type="text" name="password" value={this.state.password} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>Password Confirmation:</label>
-        <input type="text" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>Profile Image:</label>
-        <input type="text" name="profile_img" value={this.state.profile_img} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>Biography:</label>
-        <input type="text" name="biography" value={this.state.biography} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <input type="submit" value="Submit"/>
-        </form>
+
+          <form onSubmit={this.handleOnSubmit}>
+
+            <div class="form-group">
+              <label>Username:</label>
+              <input type="text" name="username" value={this.state.username} onChange={this.handleOnChange}/>
+            </div>
+
+            <div class="form-group">
+              <label>Email:</label>
+              <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange}/>
+            </div>
+
+            <div class="form-group">
+              <label>Password:</label>
+              <input type="text" name="password" value={this.state.password} onChange={this.handleOnChange}/>
+            </div>
+
+            <div class="form-group">
+              <label>Password Confirmation:</label>
+              <input type="text" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleOnChange}/>
+            </div>
+
+            <div class="form-group">
+              <label>Profile Image:</label>
+              <input type="text" name="profile_img" value={this.state.profile_img} onChange={this.handleOnChange}/>
+            </div>
+
+            <div class="form-group">
+              <label>Biography:</label>
+              <input type="text" name="biography" value={this.state.biography} onChange={this.handleOnChange}/>
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-light"/>
+
+          </form>
       </div>
     )
   }

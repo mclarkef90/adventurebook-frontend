@@ -40,20 +40,26 @@ class AddReview extends React.Component {
     console.log(this.props)
 
     return(
-      <div>
+      <div class="card">
         <form onSubmit={this.handleOnSubmit}>
-        <h1>Add Review </h1>
-        <label>Comment:</label>
-        <input type="text" name="comment" value={this.state.comment} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>Like:</label>
-        <input type="checkbox" name="liked" value={true} onChange={this.handleOnChange} />
-        <br/><br/>
-        <label>Completed:</label>
-        <input type="checkbox" name="completed" value={true} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <input type="submit" value="Submit"/>{"  "}
-        <button onClick={() => this.props.history.goBack()}>Close</button>
+          <h3>Add Review </h3>
+            <div class="form-group">
+              <label>Comment:</label>
+              <input type="text" name="comment" value={this.state.comment} onChange={this.handleOnChange}/>
+            </div>
+
+            <div class="form-group">
+              <label>Like:</label>
+              <input type="checkbox" name="liked" value={true} onChange={this.handleOnChange} />
+            </div>
+
+            <div class="form-group">
+              <label>Completed:</label>
+              <input type="checkbox" name="completed" value={true} onChange={this.handleOnChange}/>
+            </div>
+
+            <input class="btn btn-link" type="submit" value="Submit"/>{"  "}
+            <button class="btn btn-link" onClick={() => this.props.history.goBack()}>Close</button>
         </form>
       </div>
     )

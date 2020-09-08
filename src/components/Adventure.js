@@ -8,6 +8,13 @@ class Adventure extends React.Component {
 
   constructor(props){
     super(props)
+    this.state={
+      addReview: false
+    }
+  }
+
+  hideAddReview = () => {
+    this.setState(prevState => ({addReview: !this.state.addReview}))
   }
 
   // likeHandler = (event) => {
@@ -27,21 +34,27 @@ class Adventure extends React.Component {
     return(
       <>
       {this.props.user ?
-        <>
+        <div className="container">
           <img src={adventure.attributes.image_url} className="profileImg" alt="activity"/>
-          <h1>{adventure.attributes.title}</h1>
+          <h3>{adventure.attributes.title}</h3>
           <p>{adventure.attributes.description}</p>
           <p>Completions: {adventure.attributes.completions}</p>
           <p>Likes: {adventure.attributes.likes} </p>
           <h2>Reviews</h2>
             {reviews.map(review =>
-              <ul key={review.id}>
+              <ul key={review.id} class="card">
                 <p>{review.attributes.comment}</p>
               </ul>
             )}
-          <h3>Write a Review</h3>
-          <AddReview user={this.props.user.id} adventure={adventure.id}/>
-        </>
+          <button class="btn btn-link" onClick={this.hideAddReview}>Write a Review</button>
+          {this.state.addReview ?
+            <>
+            <AddReview user={this.props.user.id} adventure={adventure.id}/>
+            </>
+            :
+            null
+          }
+        </div>
       :
       null
       }

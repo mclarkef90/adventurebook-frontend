@@ -42,18 +42,26 @@ class EditReview extends React.Component {
     return(
       <div>
         <form onSubmit={this.handleOnSubmit}>
-        <h1>Edit Review </h1>
-        <label>Comment:</label>
-        <input type="text" name="comment" value={this.state.comment} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>{this.state.liked ? 'UnLike:' : 'Like'}</label>
-        <input type="checkbox" name="liked" value={!this.state.liked} onChange={this.handleOnChange} />
-        <br/><br/>
-        <label>{this.state.completed ? 'Mark Incomplete:' : 'Completed'}</label>
-        <input type="checkbox" name="completed" value={!this.state.completed} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <input type="submit" value="Submit"/>{"  "}
-        <button onClick={() => this.props.history.goBack()}>Close</button>
+          <h3>Edit Review </h3>
+
+            <div class="form-group">
+              <label>Comment:</label>
+              <input type="text" name="comment" value={this.state.comment} onChange={this.handleOnChange}/>
+            </div>
+
+            <div class="form-group">
+              <label>{this.state.liked ? 'UnLike:' : 'Like'}</label>
+              <input type="checkbox" name="liked" value={!this.state.liked} onChange={this.handleOnChange} />
+            </div>
+
+            <div class="form-group">
+              <label>{this.state.completed ? 'Mark Incomplete:' : 'Completed'}</label>
+              <input type="checkbox" name="completed" value={!this.state.completed} onChange={this.handleOnChange}/>
+            </div>
+
+            <input class="btn btn-link" type="submit" value="Submit"/>{"  "}
+
+            <button class="btn btn-link" onClick={() => this.props.history.goBack()}>Close</button>
         </form>
       </div>
     )

@@ -39,18 +39,26 @@ class EditAdventure extends React.Component {
     return(
       <div>
         <form onSubmit={this.handleOnSubmit}>
-        <h1>Edit Adventure </h1>
-        <label>Title:</label>
-        <input type="text" name="title" value={this.state.title} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>Description:</label>
-        <input type="text" name="description" value={this.state.description} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>Image URL:</label>
-        <input type="text" name="image_url" value={this.state.image_url} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <input type="submit" value="Submit"/>{"  "}
-        <button onClick={() => this.props.history.goBack()}>Close</button>
+          <div class="form-group">
+            <h3>Edit Adventure </h3>
+            <label>Title:</label>
+            <input type="text" name="title" value={this.state.title} onChange={this.handleOnChange}/>
+          </div>
+
+          <div class="form-group">
+            <label>Description:</label>
+            <input type="text" name="description" value={this.state.description} onChange={this.handleOnChange}/>
+          </div>
+
+          <div class="form-group">
+            <label>Image URL:</label>
+            <input type="text" name="image_url" value={this.state.image_url} onChange={this.handleOnChange}/>
+          </div>
+
+          <input class="btn btn-link" type="submit" value="Submit"/>{"  "}
+
+          <button class="btn btn-link" onClick={() => this.props.history.goBack()}>Close</button>
+
         </form>
       </div>
     )

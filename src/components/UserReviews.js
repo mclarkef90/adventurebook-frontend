@@ -29,11 +29,11 @@ class UserReviews extends React.Component{
     return(
       <>
         {reviews.map(review=>
-          <ul key={review.id}>
+          <ul key={review.id} class="card" >
             <p>{review.attributes.comment}</p>
             <p>Liked: {review.attributes.liked ? 'Yes' : 'No'}  </p>
             <p>Completed: {review.attributes.completed ? 'Yes' : 'No'}  </p>
-            <button onClick={this.hideEditReview}>Edit Review</button>{' '}<button onClick={(id, adventure_id)=> this.handleDelete(review.id, review.adventure_id)}>Delete Comment</button>
+            <button class="btn btn-link" onClick={this.hideEditReview}>Edit Review</button>{' '}<button class="btn btn-link" onClick={(id, adventure_id)=> this.handleDelete(review.id, review.adventure_id)}>Delete Comment</button>
 
             {this.state.editReview ?
               <>

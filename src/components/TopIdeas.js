@@ -18,25 +18,27 @@ export default class TopIdeas extends React.Component{
 
   render(){
     return(
-      <>
+      <div className="container">
       {this.state.adventure ?
         <>
 
-        <h1>Today's Best Ideas</h1>
-          <h2>Most Liked Adventure Idea</h2>
+        <h2>Today's Best Ideas</h2>
+          <h3>Most Liked Adventure Idea</h3>
             {console.log(this.state.adventure)}
             <Link to={`/Adventures/${this.state.adventure.id}`}><h3>{this.state.adventure.title}</h3></Link>
-          <br/>
-          <h2> User with the Best Ideas (based on Ratings and Likes) </h2>
+            <img src={this.state.adventure.image_url} alt="highest rated activity" className="profileImg"/>
+          <br/><br/>
+          <h3> User with the Best Ideas (based on Ratings and Likes) </h3>
             {console.log(this.state.user)}
           <Link to={`/Users/${this.state.user.id}`}><h3>{this.state.user.username}</h3></Link>
+          <img src={this.state.user.profile_img} alt="highest rated user" className= "profileImg" />
 
         </>
       :
         null
       }
 
-      </>
+      </div>
     )
   }
 }

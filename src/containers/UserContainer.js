@@ -41,14 +41,14 @@ class UserContainer extends React.Component {
     console.log(this.state)
 
     return(
-      <>
+      <div className="container">
         {this.props.user ?
         <>
-          <h1> User Profile </h1>
+          <h2> User Profile </h2>
           <img src={user.attributes.profile_img} alt="kitten" className="profileImg"/>
-          <h2> Username: {user.attributes.username} </h2>
-          <h2> Email: {user.attributes.email} </h2>
-          <h2> Biography: {user.attributes.biography} </h2>
+          <p> Username: {user.attributes.username} </p>
+          <p> Email: {user.attributes.email} </p>
+          <p> Biography: {user.attributes.biography} </p>
           {this.state.editProfile ?
             <>
             <EditUser user={user}/>
@@ -56,13 +56,13 @@ class UserContainer extends React.Component {
             :
             null
           }
-          <button onClick={this.hideEditProfile}>Edit Profile</button>{' '}
-          <button onClick={(id) => this.handleDelete(user.id)}>Delete Profile</button>
+          <button class="btn btn-link" onClick={this.hideEditProfile}>Edit Profile</button>{' '}
+          <button class="btn btn-link" onClick={(id) => this.handleDelete(user.id)}>Delete Profile</button>
           <br/>
 
 
-          <h1> My Adventure Ideas </h1>
-          <button onClick={this.hideAddAdventure}>Add Adventure</button>{' '}
+          <h3> My Adventure Ideas </h3>
+          <button class="btn btn-link" onClick={this.hideAddAdventure}>Add Adventure</button>{' '}
           {this.state.addAdventure ?
             <>
             <AddAdventure userid={user.id}/>
@@ -73,14 +73,14 @@ class UserContainer extends React.Component {
 
           <UserAdventures userid={user.id} />
 
-          <h1> My Comments </h1>
+          <h3> My Comments </h3>
           <UserReviews userid={user.id}/>
 
         </>
         :
         null
         }
-      </>
+      </div>
     )
   }
 }

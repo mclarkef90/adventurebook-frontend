@@ -29,18 +29,19 @@ class AdventureSearch extends React.Component{
     console.log(this.state)
      return(
       <div>
-        <br/>
-          <input type="text" value={this.state.searchTerm} placeholder="Search Adventures" name="searchTerm" onChange={this.onInputChange}/>
-
+          <input class="input-group input-group-sm mb-3" type="text" value={this.state.searchTerm} placeholder="Search Adventures" name="searchTerm" onChange={this.onInputChange}/>
+          <ul class="container">
           {this.state.currentDisplayed.map(adventure=>
-            <ul key={adventure.attributes.title}>
-              <img src={adventure.attributes.image_url} className="profileImg" alt="activity"/>
-              <Link to={`/Adventures/${adventure.id}`}><h1>{adventure.attributes.title}</h1></Link>
+            <ul key={adventure.attributes.title} class="card">
+              <img class="card-img-top" src={adventure.attributes.image_url} alt="activity"/>
+              <Link to={`/Adventures/${adventure.id}`}><h3>{adventure.attributes.title}</h3></Link>
               <p>{adventure.attributes.description}</p>
               <p>Likes: {adventure.attributes.likes}</p>
               <p>Completions: {adventure.attributes.completions}</p>
             </ul>
+
           )}
+          </ul>
        </div>
       )
     }

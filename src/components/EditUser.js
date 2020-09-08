@@ -65,20 +65,29 @@ class EditUser extends React.Component {
       <div>
         <>
         <form data-id={this.state.id} onSubmit={this.handleOnSubmit}>
-        <h2>Edit User Profile</h2>
-        <label>Name:</label>
-        <input type="text" name="username" value={this.state.username} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>Email:</label>
-        <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>City:</label>
-        <input type="text" name="profile_img" value={this.state.profile_img} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>State:</label>
-        <input type="text" name="biography" value={this.state.biography} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <input type="submit" value="Submit"/>{'  '}
+          <h3>Edit User Profile</h3>
+
+            <div class="form-group">
+              <label>Name:</label>
+              <input type="text" name="username" value={this.state.username} onChange={this.handleOnChange}/>
+            </div>
+
+            <div class="form-group">
+              <label>Email:</label>
+              <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange}/>
+            </div>
+
+            <div class="form-group">
+              <label>City:</label>
+              <input type="text" name="profile_img" value={this.state.profile_img} onChange={this.handleOnChange}/>
+            </div>
+
+            <div class="form-group">
+              <label>State:</label>
+              <input type="text" name="biography" value={this.state.biography} onChange={this.handleOnChange}/>
+            </div>
+
+            <input class="btn btn-link" type="submit" value="Submit"/>{'  '}
         </form>
         <br/>
       </>

@@ -29,7 +29,7 @@ class LogIn extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className="container">
       <h3>Log In</h3>
         <form onSubmit= {this.handleSubmit}>
           <label>Email: </label>
@@ -38,7 +38,7 @@ class LogIn extends React.Component {
           <label>Password: </label>
             <input type="password" name="password" value={this.state.password} onChange={this.changeHandler}/>
               <br/>
-          <input type="submit" value="Login"/>
+          <input type="submit" value="Login" class="btn btn-light"/>
         </form>
       </div>
     )
