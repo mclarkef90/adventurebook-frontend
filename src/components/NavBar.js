@@ -6,12 +6,12 @@ import {NavLink, Link} from 'react-router-dom'
 export default function NavBar(props){
   return(
     <>
-    <h3 className="jumbotron jumbotron-fluid">
+    <h3 class='p-3 mb-2 bg-light text-dark'>
       MyAdventureBook - An App for finding and sharing good ideas of things to do.
     </h3>
     <ul className="nav nav-pills nav-justified">
 
-    <NavLink to="/" exact activeStyle={{color: 'indigo'}} style={{ marginRight: 10 }}>
+    <NavLink to="/" exact activeStyle={{color: 'indigo'}} style={{ marginRight: 10, marginLeft:10 }}>
       Home
     </NavLink>
 

@@ -1,4 +1,5 @@
-export function deleteReview(id, adventure_id) {
+export function deleteReview(id) {
+  
   return (dispatch) => {
     fetch(`http://localhost:3000/api/v1/reviews/${id}`, {
       method: "DELETE",
@@ -8,10 +9,10 @@ export function deleteReview(id, adventure_id) {
       }
       })
     .then(response => response.json())
-    .then(review => {
+    .then(data => {
           dispatch({
       type: 'DELETE_REVIEW',
-      payload: review})
+      payload: data})
     })
   }
 }

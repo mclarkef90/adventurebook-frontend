@@ -59,7 +59,6 @@ class AddReview extends React.Component {
             </div>
 
             <input class="btn btn-link" type="submit" value="Submit"/>{"  "}
-            <button class="btn btn-link" onClick={() => this.props.history.goBack()}>Close</button>
         </form>
       </div>
     )

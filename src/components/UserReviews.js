@@ -14,8 +14,8 @@ class UserReviews extends React.Component{
     }
   }
 
-  handleDelete = (id, adventure_id) => {
-    this.props.deleteReview(id, adventure_id)
+  handleDelete = (id) => {
+    this.props.deleteReview(id)
   }
 
   hideEditReview = () => {
@@ -33,7 +33,7 @@ class UserReviews extends React.Component{
             <p>{review.attributes.comment}</p>
             <p>Liked: {review.attributes.liked ? 'Yes' : 'No'}  </p>
             <p>Completed: {review.attributes.completed ? 'Yes' : 'No'}  </p>
-            <button class="btn btn-link" onClick={this.hideEditReview}>Edit Review</button>{' '}<button class="btn btn-link" onClick={(id, adventure_id)=> this.handleDelete(review.id, review.adventure_id)}>Delete Comment</button>
+            <button class="btn btn-link" onClick={this.hideEditReview}>Edit Review</button>{' '}<button class="btn btn-link" onClick={(id)=> this.handleDelete(review.id)}>Delete Review</button>
 
             {this.state.editReview ?
               <>
@@ -54,6 +54,9 @@ const mapStateToProps = state => {
   console.log(state);
   return {
     reviews: state.reviews,
+    users: state.users,
+    adventures: state.adventures,
+    user: state.user
   }
 }
 export default connect(mapStateToProps, {deleteReview})(UserReviews)

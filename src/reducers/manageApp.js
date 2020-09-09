@@ -80,15 +80,18 @@ export default function manageApp(state=
          return {...state, reviews: [...state.reviews, action.payload.review.data], adventures: [...updatedAdventure, action.payload.adventure.data]
          }
 
-
        case 'DELETE_REVIEW':
 
-       let deleteReview= [...state.reviews.filter(review => review.id !== action.payload)]
-          return {...state, reviews: [...deleteReview]
-          }
+
+       let deleteReview= [...state.reviews.filter(review => review.id !== action.payload.review.data.id)]
+       let updatedAdventure2= [...state.adventures.filter(adventure => adventure.id !== action.payload.adventure.data.id)]
+       let updatedUser= [...state.users.filter(user => user.id !== action.payload.user.data.id)]
+
+       return {...state, reviews: [...deleteReview], adventures: [...updatedAdventure2, action.payload.adventure.data], users: [...updatedUser, action.payload.user.data]
+       }
 
         case 'EDIT_REVIEW':
-        
+
         let editReview= [...state.reviews.filter(review => review.id !== action.payload.data.id)]
            return {...state, reviews: [...editReview, action.payload.data]
            }
