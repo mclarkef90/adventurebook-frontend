@@ -92,8 +92,9 @@ export default function manageApp(state=
 
         case 'EDIT_REVIEW':
 
-        let editReview= [...state.reviews.filter(review => review.id !== action.payload.data.id)]
-           return {...state, reviews: [...editReview, action.payload.data]
+        let editReview= [...state.reviews.filter(review => review.id !== action.payload.review.data.id)]
+        let updatedAdventure3= [...state.adventures.filter(adventure => adventure.id !== action.payload.adventure.data.id)]
+           return {...state, reviews: [...editReview, action.payload.review.data], adventures: [...updatedAdventure3, action.payload.adventure.data]
            }
 
     default:

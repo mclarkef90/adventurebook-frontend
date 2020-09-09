@@ -11,11 +11,11 @@ export function editReview({id, comment, adventure_id, user_id, liked, completed
       }
     )
     .then(response => response.json())
-    .then(review =>
+    .then(data =>
 
       dispatch({
       type: 'EDIT_REVIEW',
-      payload: review
+      payload: data
     }))
     }
   }
