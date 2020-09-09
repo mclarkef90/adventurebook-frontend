@@ -18,6 +18,13 @@ export function setUser(email, history){
           payload: user
         })
         history.push('/Profile')
+      })
+      .catch(error => {
+        dispatch({
+          type: 'LOGIN_FAILURE',
+          payload: error
         })
+        history.push('/LogIn')
+      })
       }
     }

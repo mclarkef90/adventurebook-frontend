@@ -13,6 +13,12 @@ export default function manageApp(state=
         loading: true
       }
 
+    case 'LOGIN_FAILURE':
+      return {
+        ...state, adventures: [...state.adventures],
+        loading: false
+      }
+
     case 'SET_USER':
       return {
         ...state, user: action.payload.data,
