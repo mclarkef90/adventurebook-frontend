@@ -15,6 +15,7 @@ import {fetchUsers} from './actions/fetchUsers'
 import {fetchReviews} from './actions/fetchReviews'
 import Adventure from './components/Adventure'
 import TopUser from './components/TopUser'
+import {BASE_URL} from './index'
 
 
 class App extends React.Component {
