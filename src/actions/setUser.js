@@ -24,7 +24,7 @@ export function setUser(email, history){
           type: 'LOGIN_FAILURE',
           payload: error
         })
-        history.push('/LogIn')
+        window.location.reload()
       })
       }
     }
