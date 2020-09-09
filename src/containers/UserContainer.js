@@ -3,6 +3,8 @@ import {Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
 import EditUser from '../components/EditUser'
 import UserAdventures from '../components/UserAdventures'
+import UserLogAdventures from '../components/UserLogAdventures'
+import UserLogLikedAdventures from '../components/UserLogLikedAdventures'
 import UserReviews from '../components/UserReviews'
 import {deleteUser} from '../actions/deleteUser'
 import AddAdventure from '../components/AddAdventure'
@@ -72,6 +74,12 @@ class UserContainer extends React.Component {
           }
 
           <UserAdventures userid={user.id} />
+
+          <h3> My Completed Adventures </h3>
+          <UserLogAdventures userid={user.id} />
+
+          <h3> My Liked Adventures </h3>
+          <UserLogLikedAdventures userid={user.id} />
 
           <h3> My Comments </h3>
           <UserReviews userid={user.id}/>
