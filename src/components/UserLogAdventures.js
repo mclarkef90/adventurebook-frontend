@@ -17,12 +17,10 @@ class UserLogAdventures extends React.Component{
     return(
       <>
         {result.map(adventure =>
-          <ul key={adventure.id} class="card">
+          <ul key={adventure.id} class="card w-50">
             <img src={adventure.attributes.image_url} className="profileImg" alt="activity" />
 
             <Link to={`/Adventures/${adventure.id}`}><h4>{adventure.attributes.title}</h4></Link>
-            <button class="btn btn-link" onClick={this.hideEditAdventure}>Edit Adventure</button>{' '}<button class="btn btn-link" onClick={(id)=> this.handleDelete(adventure.id)}>Delete Adventure</button>
-
 
           </ul>
         )}

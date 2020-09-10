@@ -14,9 +14,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 let store= createStore(manageApp, composeEnhancers(applyMiddleware(thunk)))
 
-export const BASE_URL = process.env.NODE_ENV === 'production' ? "https://myadventurebook.herokuapp.com/" : "http://localhost:3001/api/v1"
-
-
 ReactDOM.render(
 
   <Provider store={store}>

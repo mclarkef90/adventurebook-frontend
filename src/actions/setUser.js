@@ -1,8 +1,7 @@
-import {BASE_URL} from '../index'
 
 export function setUser(email, history){
   return(dispatch) => {
-    fetch((`${BASE_URL}`+'/login'), {
+    fetch('http://localhost:3000/api/v1/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

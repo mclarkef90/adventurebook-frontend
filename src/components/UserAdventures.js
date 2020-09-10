@@ -29,7 +29,7 @@ class UserAdventures extends React.Component{
     return(
       <>
         {adventures.map(adventure=>
-          <ul key={adventure.id} class="card">
+          <ul key={adventure.id} class="card w-50">
             <img src={adventure.attributes.image_url} className="profileImg" alt="activity" />
 
             <Link to={`/Adventures/${adventure.id}`}><h4>{adventure.attributes.title}</h4></Link>

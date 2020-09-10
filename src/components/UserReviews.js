@@ -29,7 +29,7 @@ class UserReviews extends React.Component{
     return(
       <>
         {reviews.map(review=>
-          <ul key={review.id} class="card" >
+          <ul key={review.id} class="card w-50" >
             <p>{review.attributes.comment}</p>
             <p>Liked: {review.attributes.liked ? 'Yes' : 'No'}  </p>
             <p>Completed: {review.attributes.completed ? 'Yes' : 'No'}  </p>
