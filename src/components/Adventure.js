@@ -48,7 +48,8 @@ class Adventure extends React.Component {
 
         </div>
       :
-      null
+      <h3>Please Log In or Sign Up</h3>
+
       }
       </>
     )

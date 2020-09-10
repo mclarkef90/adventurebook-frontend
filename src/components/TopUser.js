@@ -23,7 +23,8 @@ export default function TopUser(props){
             )}
       </>
       :
-      null
+      <h3>Please Log In or Sign Up</h3>
+
     }
     </>
   )

@@ -7,7 +7,7 @@ export default function NavBar(props){
   return(
     <>
     <h3 class='p-3 mb-2 bg-light text-dark'>
-      MyAdventureBook - An App for finding and sharing good ideas of things to do.
+      MyAdventureBook - An App for Finding and Sharing Good Ideas of Things to Do.
     </h3>
     <ul className="nav nav-pills nav-justified">
 
